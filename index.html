@@ -1,66 +1,275 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Caroline - Ateliers Cuisine Anniversaire Lyon</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anniversaire Cuisine Enfant Lyon | Ateliers 6-17 ans – Cheffe Caroline</title>
+  <meta name="description" content="Organisez un anniversaire original à Lyon ! Ateliers cuisine ludiques pour enfants de 6 à 17 ans. Formule clé en main, zéro stress pour les parents.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FDF8F3; --vanilla: #FFFAF5; --raspberry: #E54F6D;
+      --mint: #7DD3C0; --honey: #F5A623; --chocolate: #3D2314;
+      --cocoa: #5C4033; --stone: #8B7355; --latte: #D4C4B0;
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --radius: 24px; --radius-full: 9999px;
+      --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    body { font-family: var(--font-body); font-size: 16px; line-height: 1.7; color: var(--chocolate); background: var(--cream); overflow-x: hidden; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .skip-link { position: absolute; top: -100%; left: 1rem; background: var(--raspberry); color: white; padding: 0.5rem 1rem; border-radius: 12px; z-index: 1000; font-weight: 600; }
+    .skip-link:focus { top: 1rem; }
+
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 1.5rem; transition: var(--transition); }
+    header.scrolled { background: rgba(253, 248, 243, 0.95); backdrop-filter: blur(20px); box-shadow: 0 4px 30px rgba(61, 35, 20, 0.08); }
+    nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .logo { display: flex; align-items: center; gap: 0.75rem; }
+    .logo-icon { width: 44px; height: 44px; background: linear-gradient(135deg, var(--raspberry), var(--honey)); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; display: flex; align-items: center; justify-content: center; animation: morph 8s ease-in-out infinite; }
+    @keyframes morph { 0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; } 50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; } }
+    .logo-icon svg { width: 22px; height: 22px; fill: white; }
+    .logo-text { font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; }
+    .nav-links { display: none; list-style: none; gap: 2rem; }
+    .nav-links a { font-size: 0.9375rem; font-weight: 500; color: var(--cocoa); position: relative; padding-bottom: 4px; }
+    .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--raspberry); transition: var(--transition); }
+    .nav-links a:hover::after { width: 100%; }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-body); font-size: 0.9375rem; font-weight: 600; padding: 0.875rem 1.75rem; border-radius: var(--radius-full); border: none; cursor: pointer; transition: var(--transition); }
+    .btn-primary { background: var(--raspberry); color: white; box-shadow: 0 4px 20px rgba(229, 79, 109, 0.35); }
+    .btn-primary:hover { background: var(--chocolate); transform: translateY(-2px); }
+    .btn-secondary { background: white; color: var(--chocolate); box-shadow: 0 4px 20px rgba(61, 35, 20, 0.1); }
+    .btn-secondary:hover { transform: translateY(-2px); }
+
+    .hero { min-height: 100vh; padding: calc(80px + 3rem) 1.5rem 3rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; z-index: -1; }
+    .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(253,248,243,0.92) 0%, rgba(253,248,243,0.85) 50%, rgba(253,248,243,0.7) 100%); }
+    .hero-content { max-width: 700px; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: white; padding: 0.5rem 1rem; border-radius: var(--radius-full); font-size: 0.8125rem; font-weight: 600; color: var(--raspberry); margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); animation: fadeInUp 0.8s 0.2s both; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; animation: fadeInUp 0.8s 0.3s both; }
+    .hero-title span { color: var(--raspberry); font-style: italic; }
+    .hero-subtitle { font-size: 1.125rem; color: var(--cocoa); max-width: 500px; margin-bottom: 2rem; animation: fadeInUp 0.8s 0.4s both; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; animation: fadeInUp 0.8s 0.5s both; }
+    .hero-stats { display: flex; gap: 2rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--latte); animation: fadeInUp 0.8s 0.6s both; }
+    .stat-value { font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; color: var(--raspberry); }
+    .stat-label { font-size: 0.8125rem; color: var(--stone); }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+    section { padding: 6rem 1.5rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
+    .section-badge { display: inline-flex; background: var(--vanilla); padding: 0.5rem 1rem; border-radius: var(--radius-full); font-size: 0.8125rem; font-weight: 600; color: var(--raspberry); margin-bottom: 1rem; }
+    .section-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.2; margin-bottom: 1rem; }
+    .section-subtitle { font-size: 1.0625rem; color: var(--stone); }
+
+    .pourquoi { background: var(--vanilla); }
+    .pourquoi-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    .pourquoi-column h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+    .pourquoi-column h3 span { width: 36px; height: 36px; background: var(--raspberry); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .pourquoi-column h3 svg { width: 18px; height: 18px; fill: white; }
+    .pourquoi-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .pourquoi-list li { display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem; background: white; border-radius: var(--radius); box-shadow: 0 2px 12px rgba(0,0,0,0.04); transition: var(--transition); }
+    .pourquoi-list li:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+    .pourquoi-list svg { width: 20px; height: 20px; fill: var(--mint); flex-shrink: 0; margin-top: 2px; }
+
+    .ateliers-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    .atelier-card { background: white; border-radius: 40px; overflow: hidden; box-shadow: 0 4px 25px rgba(0,0,0,0.06); transition: var(--transition); }
+    .atelier-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.12); }
+    .atelier-image { position: relative; height: 220px; overflow: hidden; }
+    .atelier-image img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+    .atelier-card:hover .atelier-image img { transform: scale(1.05); }
+    .atelier-age { position: absolute; top: 1rem; left: 1rem; background: white; padding: 0.5rem 1rem; border-radius: var(--radius-full); font-size: 0.8125rem; font-weight: 700; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+    .atelier-content { padding: 1.5rem; }
+    .atelier-title { font-family: var(--font-display); font-size: 1.375rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .atelier-tagline { font-size: 0.9375rem; font-weight: 500; color: var(--raspberry); margin-bottom: 1rem; }
+    .atelier-features { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .atelier-features li { font-size: 0.875rem; color: var(--cocoa); display: flex; align-items: center; gap: 0.5rem; }
+    .atelier-features svg { width: 16px; height: 16px; fill: var(--mint); }
+    .atelier-objective { padding: 1rem; background: var(--vanilla); border-radius: 12px; font-size: 0.875rem; color: var(--cocoa); }
+    .atelier-objective strong { color: var(--chocolate); }
+
+    .deroulement { background: var(--chocolate); color: white; position: relative; overflow: hidden; }
+    .deroulement::before { content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(229, 79, 109, 0.15) 0%, transparent 70%); }
+    .deroulement .section-badge { background: rgba(255,255,255,0.1); color: var(--honey); }
+    .deroulement .section-title { color: white; }
+    .deroulement .section-subtitle { color: var(--latte); }
+    .timeline { display: flex; flex-direction: column; gap: 1.5rem; max-width: 700px; margin: 0 auto; }
+    .timeline-item { display: flex; gap: 1.5rem; }
+    .timeline-number { width: 48px; height: 48px; background: var(--raspberry); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; flex-shrink: 0; }
+    .timeline-content { flex: 1; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .timeline-item:last-child .timeline-content { border-bottom: none; }
+    .timeline-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .timeline-text { color: var(--latte); font-size: 0.9375rem; }
+
+    .cheffe { background: linear-gradient(135deg, var(--vanilla) 0%, var(--cream) 100%); }
+    .cheffe-content { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+    .cheffe-image { position: relative; }
+    .cheffe-image img { border-radius: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+    .cheffe-image::before { content: ''; position: absolute; top: -20px; left: -20px; width: 100%; height: 100%; background: var(--raspberry); border-radius: 40px; z-index: -1; opacity: 0.2; }
+    .cheffe-text h2 { font-family: var(--font-display); font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; margin-bottom: 0.5rem; }
+    .cheffe-text h2 span { color: var(--raspberry); }
+    .cheffe-role { font-size: 1rem; color: var(--stone); margin-bottom: 1.5rem; }
+    .cheffe-desc { font-size: 1.0625rem; color: var(--cocoa); margin-bottom: 1.5rem; }
+    .cheffe-lieu { display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem; background: white; border-radius: var(--radius); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .cheffe-lieu svg { width: 24px; height: 24px; fill: var(--raspberry); flex-shrink: 0; }
+    .cheffe-lieu strong { display: block; font-size: 1rem; margin-bottom: 0.25rem; }
+    .cheffe-lieu span { font-size: 0.875rem; color: var(--stone); }
+
+    .tarifs { background: var(--vanilla); }
+    .tarif-card { background: white; border-radius: 40px; padding: 2.5rem; max-width: 600px; margin: 0 auto; box-shadow: 0 10px 40px rgba(0,0,0,0.08); position: relative; overflow: hidden; }
+    .tarif-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, var(--raspberry), var(--honey)); }
+    .tarif-price { text-align: center; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--latte); }
+    .tarif-price .price { font-family: var(--font-display); font-size: 3.5rem; font-weight: 700; color: var(--raspberry); }
+    .tarif-price .price span { font-size: 1.25rem; color: var(--stone); }
+    .tarif-price .info { font-size: 0.9375rem; color: var(--stone); margin-top: 0.5rem; }
+    .tarif-includes h4 { font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem; }
+    .tarif-list { list-style: none; display: grid; gap: 0.75rem; margin-bottom: 2rem; }
+    .tarif-list li { display: flex; align-items: center; gap: 0.75rem; font-size: 0.9375rem; }
+    .tarif-list svg { width: 20px; height: 20px; fill: var(--mint); flex-shrink: 0; }
+    .tarif-horaires { background: var(--vanilla); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 2rem; }
+    .tarif-horaires h5 { font-size: 0.875rem; font-weight: 600; margin-bottom: 0.75rem; }
+    .tarif-horaires ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tarif-horaires li { font-size: 0.8125rem; background: white; padding: 0.375rem 0.75rem; border-radius: var(--radius-full); color: var(--cocoa); }
+    .tarif-cta { text-align: center; }
+
+    .galerie { padding-left: 0; padding-right: 0; overflow: hidden; }
+    .galerie .section-header { padding: 0 1.5rem; }
+    .galerie-track { display: flex; gap: 1rem; animation: scroll 30s linear infinite; }
+    .galerie-track:hover { animation-play-state: paused; }
+    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .galerie-item { flex-shrink: 0; width: 280px; height: 350px; border-radius: var(--radius); overflow: hidden; }
+    .galerie-item img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+    .galerie-item:hover img { transform: scale(1.05); }
+
+    .temoignages { background: var(--chocolate); color: white; }
+    .temoignages .section-badge { background: rgba(255,255,255,0.1); color: var(--honey); }
+    .temoignages .section-title { color: white; }
+    .temoignages-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 800px; margin: 0 auto; }
+    .temoignage-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 1.5rem; }
+    .temoignage-stars { color: var(--honey); font-size: 1.25rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
+    .temoignage-text { font-family: var(--font-display); font-size: 1.125rem; font-style: italic; line-height: 1.6; margin-bottom: 1rem; }
+    .temoignage-author { font-size: 0.875rem; color: var(--latte); }
+    .temoignage-author strong { color: white; }
+
+    .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+    .faq-item { background: white; border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .faq-question { width: 100%; padding: 1.25rem 1.5rem; background: none; border: none; text-align: left; font-family: var(--font-body); font-size: 1rem; font-weight: 600; color: var(--chocolate); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; transition: var(--transition); }
+    .faq-question:hover { background: var(--vanilla); }
+    .faq-question svg { width: 20px; height: 20px; fill: var(--raspberry); transition: var(--transition); flex-shrink: 0; }
+    .faq-item.open .faq-question svg { transform: rotate(180deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .faq-item.open .faq-answer { max-height: 500px; }
+    .faq-answer-inner { padding: 0 1.5rem 1.5rem; font-size: 0.9375rem; color: var(--cocoa); line-height: 1.7; }
+
+    .cta-section { background: linear-gradient(135deg, var(--raspberry) 0%, #C9405A 100%); color: white; text-align: center; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: rgba(255,255,255,0.1); border-radius: 50%; }
+    .cta-content { position: relative; z-index: 1; }
+    .cta-section h2 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; margin-bottom: 1rem; }
+    .cta-section p { font-size: 1.125rem; opacity: 0.9; max-width: 500px; margin: 0 auto 2rem; }
+    .cta-section .btn-secondary { background: white; color: var(--raspberry); }
+    .cta-section .btn-secondary:hover { background: var(--chocolate); color: white; }
+    .cta-contact { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2); }
+    .cta-contact a { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9375rem; opacity: 0.9; transition: var(--transition); }
+    .cta-contact a:hover { opacity: 1; }
+    .cta-contact svg { width: 20px; height: 20px; fill: currentColor; }
+
+    footer { background: var(--chocolate); color: white; padding: 3rem 1.5rem 1.5rem; }
+    .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; text-align: center; }
+    .footer-logo { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; }
+    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+    .footer-links a { font-size: 0.875rem; color: var(--latte); transition: var(--transition); }
+    .footer-links a:hover { color: white; }
+    .footer-social { display: flex; justify-content: center; gap: 1rem; }
+    .footer-social a { width: 44px; height: 44px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition); }
+    .footer-social a:hover { background: var(--raspberry); transform: translateY(-3px); }
+    .footer-social svg { width: 20px; height: 20px; fill: white; }
+    .footer-copy { font-size: 0.8125rem; color: var(--stone); padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
+
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+      .pourquoi-grid { grid-template-columns: repeat(2, 1fr); }
+      .ateliers-grid { grid-template-columns: repeat(2, 1fr); }
+      .cheffe-content { grid-template-columns: 1fr 1.2fr; gap: 4rem; }
+      .temoignages-grid { grid-template-columns: repeat(2, 1fr); }
+      .galerie-item { width: 320px; height: 400px; }
+      .footer-content { flex-direction: row; justify-content: space-between; align-items: center; text-align: left; }
+    }
+    @media (min-width: 1024px) {
+      .ateliers-grid { grid-template-columns: repeat(3, 1fr); }
+      .galerie-item { width: 350px; height: 450px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      .galerie-track { animation: none; }
+    }
+  </style>
 </head>
 <body>
+  <a href="#main" class="skip-link">Aller au contenu principal</a>
   <header>
-    <div class="header-content">
-      <h1 class="logo">Carol'in Cuisine</h1>
-      <nav>
-        <ul>
-          <li><a href="#about" rel="noopener noreferrer">Pourquoi choisir</a></li>
-          <li><a href="#ateliers" rel="noopener noreferrer">Ateliers</a></li>
-          <li><a href="#tarifs" rel="noopener noreferrer">Tarifs</a></li>
-          <li><a href="#contact" rel="noopener noreferrer">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
+    <nav>
+      <a href="#" class="logo">
+        <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg></div>
+        <span class="logo-text">Cheffe Caroline</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#ateliers">Ateliers</a></li>
+        <li><a href="#deroulement">Déroulement</a></li>
+        <li><a href="#tarifs">Tarifs</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a href="#contact" class="btn btn-primary">Réserver</a>
+    </nav>
   </header>
 
-  <main>
-    <section id="hero">
+  <main id="main">
+    <section class="hero">
+      <div class="hero-bg"><img src="images/main_page_background.png" alt=""></div>
       <div class="hero-content">
-        <h1>Anniversaires Cuisine à Lyon</h1>
-        <p>Ateliers ludiques et encadrés pour enfants et ados (6-17 ans)</p>
-        <p>Une idée d'anniversaire originale, sans stress pour les parents</p>
-        <a href="#contact" class="cta" rel="noopener noreferrer">Réserver un anniversaire</a>
+        <div class="hero-badge">⭐ Lyon Croix-Rousse • 6–17 ans</div>
+        <h1 class="hero-title">Anniversaire <span>cuisine</span> pour enfants</h1>
+        <p class="hero-subtitle">Une idée originale, sans stress pour les parents. Atelier ludique, créatif et encadré dans un cadre chaleureux.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">Réserver un atelier</a>
+          <a href="#ateliers" class="btn btn-secondary">Découvrir les formules</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><div class="stat-value">2h</div><div class="stat-label">d'atelier complet</div></div>
+          <div class="stat"><div class="stat-value">40€</div><div class="stat-label">par enfant</div></div>
+          <div class="stat"><div class="stat-value">7</div><div class="stat-label">enfants max</div></div>
+        </div>
       </div>
     </section>
 
-    <section id="about">
+    <section class="pourquoi">
       <div class="container">
-        <h2>Pourquoi choisir un atelier cuisine anniversaire ?</h2>
-        <div class="about-content">
-          
-          
-          <div>
-            <p>Vous cherchez une idée d'activité d'anniversaire enfant à Lyon qui change des formules classiques ? Les ateliers cuisine anniversaire proposent une expérience ludique, créative et encadrée, pensée pour le plaisir des enfants et la tranquillité des parents.</p>
-            
-            <div class="benefits-grid">
-              <div class="benefit-item">
-                <svg width="24" height="24" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
-                </svg>
-                <div>
-                  <h3>Pour les enfants</h3>
-                  <p>Une activité participative et valorisante. Le plaisir de manipuler, créer et goûter. Des souvenirs concrets à emporter.</p>
-                </div>
-              </div>
-
-              <div class="benefit-item">
-                <svg width="24" height="24" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
-                </svg>
-                <div>
-                  <h3>Pour les parents</h3>
-                  <p>Une organisation simple et fluide. Un atelier encadré par une professionnelle. Aucun matériel ni préparation à prévoir.</p>
-                </div>
-              </div>
-            </div>
+        <div class="section-header">
+          <div class="section-badge">✨ Pourquoi choisir</div>
+          <h2 class="section-title">Un atelier cuisine anniversaire ?</h2>
+          <p class="section-subtitle">Une expérience pensée pour le plaisir des enfants et la tranquillité des parents.</p>
+        </div>
+        <div class="pourquoi-grid">
+          <div class="pourquoi-column">
+            <h3><span><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span>Pour les enfants</h3>
+            <ul class="pourquoi-list">
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Une activité participative et valorisante</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Le plaisir de manipuler, créer et goûter</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Une expérience collective dont ils repartent fiers</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Souvenirs à emporter (créations + fiche recette)</li>
+            </ul>
+          </div>
+          <div class="pourquoi-column">
+            <h3><span><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span>Pour les parents</h3>
+            <ul class="pourquoi-list">
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Une organisation simple et fluide</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Un atelier structuré, encadré par une pro</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Un lieu calme et rassurant</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Aucun matériel ni préparation à prévoir</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -68,331 +277,206 @@
 
     <section id="ateliers">
       <div class="container">
-        <h2>Des ateliers par tranche d'âge</h2>
+        <div class="section-header">
+          <div class="section-badge">🎂 Nos formules</div>
+          <h2 class="section-title">Des ateliers par tranche d'âge</h2>
+          <p class="section-subtitle">Chaque atelier est adapté à l'âge et à la dynamique du groupe.</p>
+        </div>
         <div class="ateliers-grid">
-          <div class="atelier-card">
-            
-            <div class="atelier-card-content">
-              <h3>🎂 Anniversaire cuisine – 6 à 8 ans</h3>
-              <p><strong>Découvrir, manipuler, s'amuser</strong></p>
+          <article class="atelier-card">
+            <div class="atelier-image"><img src="images/anniversaire_6_8ans.png" alt="Atelier 6-8 ans"><span class="atelier-age">6–8 ans</span></div>
+            <div class="atelier-content">
+              <h3 class="atelier-title">Les Petits Chefs</h3>
+              <p class="atelier-tagline">Découvrir, manipuler, s'amuser</p>
               <ul class="atelier-features">
-                <li>
-                  <svg width="16" height="16" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
-                  </svg>
-                  Recettes simples, visuelles et accessibles
-                </li>
-                <li>
-                  <svg width="16" height="16" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
-                  </svg>
-                  Gestes sécurisés et accompagnés
-                </li>
-                <li>
-                  <svg width="16" height="16" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
-                  </svg>
-                  Activité rythmée et joyeuse
-                </li>
+                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Recettes simples et visuelles</li>
+                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Gestes sécurisés et accompagnés</li>
+                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Activité rythmée et joyeuse</li>
               </ul>
-              <p><strong>Objectif :</strong> prendre confiance, manipuler, goûter et partager.</p>
+              <div class="atelier-objective"><strong>Objectif :</strong> Prendre confiance, manipuler, goûter et partager.</div>
             </div>
-          </div>
-
-          <div class="atelier-card">
-            
-            <div class="atelier-card-content">
-              <h3>🎂 Anniversaire cuisine – 9 à 11 ans</h3>
-              <p><strong>Créer, coopérer, être fier de soi</strong></p>
+          </article>
+          <article class="atelier-card">
+            <div class="atelier-image"><img src="images/anniversaire_9_11ans.png" alt="Atelier 9-11 ans"><span class="atelier-age">9–11 ans</span></div>
+            <div class="atelier-content">
+              <h3 class="atelier-title">Les Apprentis</h3>
+              <p class="atelier-tagline">Créer, coopérer, être fier de soi</p>
               <ul class="atelier-features">
-                <li>
-                  <svg width="16" height="16" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
-                  </svg>
-                  Recettes un peu plus techniques
-                </li>
-                <li>
-                  <svg width="16" height="16" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
-                  </svg>
-                  Travail en petits groupes
-                </li>
-                <li>
-                  <svg width="16" height="16" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
-                  </svg>
-                  Décoration et personnalisation des créations
-                </li>
+                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Recettes plus techniques</li>
+                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Travail en petits groupes</li>
+                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Décoration personnalisée</li>
               </ul>
-              <p><strong>Objectif :</strong> autonomie, créativité et esprit d'équipe.</p>
+              <div class="atelier-objective"><strong>Objectif :</strong> Autonomie, créativité et esprit d'équipe.</div>
             </div>
-          </div>
-
-          <div class="atelier-card">
-            
-            <div class="atelier-card-content">
-              <h3>🎂 Anniversaire cuisine – Ados 12-17 ans</h3>
-              <p><strong>Cuisiner "comme des grands", dans une ambiance détendue</strong></p>
+          </article>
+          <article class="atelier-card">
+            <div class="atelier-image"><img src="images/anniversaire_12_17ans.png" alt="Atelier ados"><span class="atelier-age">12–17 ans</span></div>
+            <div class="atelier-content">
+              <h3 class="atelier-title">Les Ados en Cuisine</h3>
+              <p class="atelier-tagline">Cuisiner "comme des grands"</p>
               <ul class="atelier-features">
-                <li>
-                  <svg width="16" height="16" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
-                  </svg>
-                  Recettes tendance ou thématiques
-                </li>
-                <li>
-                  <svg width="16" height="16" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
-                  </svg>
-                  Plus de liberté et de responsabilités
-                </li>
-                <li>
-                  <svg width="16" height="16" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
-                  </svg>
-                  Dégustation finale type goûter revisité
-                </li>
+                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Recettes tendance</li>
+                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Plus de liberté</li>
+                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Dégustation type apéritif</li>
               </ul>
-              <p><strong>Objectif :</strong> se retrouver, créer ensemble et partager un vrai moment.</p>
+              <div class="atelier-objective"><strong>Objectif :</strong> Se retrouver, créer ensemble, partager un vrai moment.</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="deroulement" id="deroulement">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">📋 Le programme</div>
+          <h2 class="section-title">Comment se déroule un anniversaire ?</h2>
+          <p class="section-subtitle">Une expérience clé en main, encadrée par une cheffe professionnelle.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item"><div class="timeline-number">1</div><div class="timeline-content"><h3 class="timeline-title">Accueil du groupe</h3><p class="timeline-text">Présentation de l'atelier, mise en confiance, rappel des règles de sécurité.</p></div></div>
+          <div class="timeline-item"><div class="timeline-number">2</div><div class="timeline-content"><h3 class="timeline-title">Atelier cuisine encadré</h3><p class="timeline-text">Réalisation des recettes pas à pas : cupcakes, brownie, cookies… selon le thème choisi.</p></div></div>
+          <div class="timeline-item"><div class="timeline-number">3</div><div class="timeline-content"><h3 class="timeline-title">Moment anniversaire</h3><p class="timeline-text">Un gâteau avec bougies pour célébrer l'anniversaire. Temps de dégustation et de partage.</p></div></div>
+          <div class="timeline-item"><div class="timeline-number">4</div><div class="timeline-content"><h3 class="timeline-title">Fin de l'atelier</h3><p class="timeline-text">Chaque enfant repart avec sa création et une fiche recette pour recommencer à la maison !</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cheffe">
+      <div class="container">
+        <div class="cheffe-content">
+          <div class="cheffe-image"><img src="images/avant_faq.png" alt="Cheffe Caroline"></div>
+          <div class="cheffe-text">
+            <h2>Encadré par <span>Cheffe Caroline</span></h2>
+            <p class="cheffe-role">Cheffe cuisinière et animatrice diplômée</p>
+            <p class="cheffe-desc">Caroline transmet une cuisine colorée, gourmande et accessible, dans un esprit d'échange et de convivialité. Elle anime les ateliers anniversaire à Lyon Croix-Rousse, dans un lieu chaleureux.</p>
+            <div class="cheffe-lieu">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <div><strong>Comptoir Sauvage</strong><span>1 rue du Pavillon – 69004 Lyon</span></div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="deroulement">
+    <section class="tarifs" id="tarifs">
       <div class="container">
-        <h2>Comment se déroule un anniversaire ?</h2>
-        
-        
-        <p style="text-align:center;margin:var(--spacing-lg) 0">L'atelier est une expérience clé en main, encadrée par une cheffe professionnelle.</p>
-        
-        <div class="steps-grid">
-          <div class="step">
-            <div class="step-number">1</div>
-            <div>
-              <h3>Accueil du groupe</h3>
-              <p>Présentation de l'atelier, mise en confiance, rappel des règles.</p>
-            </div>
+        <div class="section-header">
+          <div class="section-badge">💰 Tarifs</div>
+          <h2 class="section-title">Informations pratiques</h2>
+          <p class="section-subtitle">Une formule tout compris, les parents n'ont rien à prévoir.</p>
+        </div>
+        <div class="tarif-card">
+          <div class="tarif-price"><div class="price">40€ <span>/ enfant</span></div><p class="info">Groupe de 7 enfants inclus • Groupes plus grands sur devis</p></div>
+          <div class="tarif-includes">
+            <h4>Le tarif comprend :</h4>
+            <ul class="tarif-list">
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>2 heures d'atelier (1h30 cuisine + 30 min goûter)</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Tous les ingrédients et le matériel</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Le goûter préparé ensemble</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Le gâteau d'anniversaire avec bougies</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Une boisson maison</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>L'encadrement complet</li>
+            </ul>
           </div>
-
-          <div class="step">
-            <div class="step-number">2</div>
-            <div>
-              <h3>Atelier cuisine encadré</h3>
-              <p>Réalisation des recettes pas à pas (cupcakes, brownie, cookies, etc.). Chaque enfant participe activement.</p>
-            </div>
-          </div>
-
-          <div class="step">
-            <div class="step-number">3</div>
-            <div>
-              <h3>Moment anniversaire</h3>
-              <p>Un gâteau avec des bougies est prévu pour célébrer l'anniversaire. Temps de dégustation et de partage.</p>
-            </div>
-          </div>
-
-          <div class="step">
-            <div class="step-number">4</div>
-            <div>
-              <h3>Fin de l'atelier</h3>
-              <p>Chaque enfant repart avec sa création et une fiche recette pour recommencer à la maison.</p>
-            </div>
-          </div>
+          <div class="tarif-horaires"><h5>Jours et horaires disponibles</h5><ul><li>Mercredi 15h30–17h30</li><li>Vendredi 16h30–18h30</li><li>Samedi 16h00–18h00</li></ul></div>
+          <div class="tarif-cta"><a href="#contact" class="btn btn-primary">Demander un devis</a></div>
         </div>
       </div>
     </section>
 
-    <section id="encadrement">
-      <div class="container">
-        <div class="encadrement-content">
-          <h2>Encadrement par notre "Cheffe Caroline"</h2>
-          <p>Cheffe cuisinière et animatrice diplômée, Caroline transmet une cuisine colorée, gourmande et accessible, dans un esprit d'échange et de convivialité.</p>
-          
-          <div class="chef-info">
-            <h3>📍 Lieu des ateliers</h3>
-            <p><strong>Comptoir Sauvage</strong><br />
-            1 rue du Pavillon – 69004 Lyon Croix-Rousse</p>
-            <p>Un lieu chaleureux, adapté aux enfants et sécurisé.</p>
-          </div>
-        </div>
+    <section class="galerie">
+      <div class="section-header">
+        <div class="section-badge">📸 En images</div>
+        <h2 class="section-title">Une image vaut mille mots</h2>
+      </div>
+      <div class="galerie-track">
+        <div class="galerie-item"><img src="images/anniversaire_6_8ans.png" alt="Atelier enfants"></div>
+        <div class="galerie-item"><img src="images/anniversaire_9_11ans.png" alt="Création collective"></div>
+        <div class="galerie-item"><img src="images/anniversaire_12_17ans.png" alt="Atelier ados"></div>
+        <div class="galerie-item"><img src="images/avant_faq.png" alt="Cupcakes"></div>
+        <div class="galerie-item"><img src="images/filler.png" alt="Sablés fleuris"></div>
+        <div class="galerie-item"><img src="images/filler2.png" alt="Décoration biscuits"></div>
+        <div class="galerie-item"><img src="images/filler3.png" alt="Table festive"></div>
+        <div class="galerie-item"><img src="images/main_page_background.png" alt="Décoration"></div>
+        <div class="galerie-item"><img src="images/anniversaire_6_8ans.png" alt="Atelier enfants"></div>
+        <div class="galerie-item"><img src="images/anniversaire_9_11ans.png" alt="Création collective"></div>
+        <div class="galerie-item"><img src="images/anniversaire_12_17ans.png" alt="Atelier ados"></div>
+        <div class="galerie-item"><img src="images/avant_faq.png" alt="Cupcakes"></div>
+        <div class="galerie-item"><img src="images/filler.png" alt="Sablés fleuris"></div>
+        <div class="galerie-item"><img src="images/filler2.png" alt="Décoration biscuits"></div>
+        <div class="galerie-item"><img src="images/filler3.png" alt="Table festive"></div>
+        <div class="galerie-item"><img src="images/main_page_background.png" alt="Décoration"></div>
       </div>
     </section>
 
-    <section id="tarifs">
+    <section class="temoignages">
       <div class="container">
-        <h2>Tarifs et informations pratiques</h2>
-        
-        <div class="tarifs-card">
-          <div class="price">40 € / enfant</div>
-          <p><strong>Groupe de 7 enfants inclus</strong><br />
-          Groupes plus importants : sur devis</p>
-          
-          <h3>Le tarif comprend :</h3>
-          <ul class="includes-list">
-            <li>
-              <svg width="16" height="16" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
-              </svg>
-              2 heures d'atelier (1h30 cuisine + 30 min goûter)
-            </li>
-            <li>
-              <svg width="16" height="16" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
-              </svg>
-              Tous les ingrédients et le matériel
-            </li>
-            <li>
-              <svg width="16" height="16" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
-              </svg>
-              Le goûter préparé ensemble
-            </li>
-            <li>
-              <svg width="16" height="16" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
-              </svg>
-              Le gâteau d'anniversaire avec bougies
-            </li>
-            <li>
-              <svg width="16" height="16" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
-              </svg>
-              Une boisson maison et l'encadrement complet
-            </li>
-          </ul>
-
-          <div class="horaires">
-            <h3>Jours et horaires</h3>
-            <p><strong>Mercredi :</strong> 15h30 – 17h30<br />
-            <strong>Vendredi :</strong> 16h30 – 18h30<br />
-            <strong>Samedi :</strong> 16h00 – 18h00</p>
-          </div>
-          
-          <p style="margin-top:var(--spacing-md)">
-            <em>Adaptations possibles : allergies, régimes spécifiques (à préciser lors de la réservation)</em>
-          </p>
+        <div class="section-header">
+          <div class="section-badge">💬 Avis</div>
+          <h2 class="section-title">Ils en parlent mieux que nous</h2>
         </div>
-      </div>
-    </section>
-
-    <section id="temoignages">
-      <div class="container">
-        <h2>Ils en parlent mieux que nous</h2>
-        
-        
-        <p style="text-align:center;margin-bottom:var(--spacing-lg)">Parce qu'un anniversaire réussi, ce sont surtout des enfants heureux… et des parents rassurés.</p>
-        
         <div class="temoignages-grid">
-          <div class="temoignage">
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-            <blockquote>"J'ai préféré faire la décoration et surtout manger les cupcakes !"</blockquote>
-            <cite>Tim, 13 ans</cite>
-          </div>
-
-          <div class="temoignage">
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-            <blockquote>"J'ai aimé tout faire, mais surtout la déco et la manger !"</blockquote>
-            <cite>Charly, 10 ans</cite>
-          </div>
+          <div class="temoignage-card"><div class="temoignage-stars">★★★★★</div><p class="temoignage-text">"J'ai préféré faire la décoration et surtout manger les cupcakes !"</p><p class="temoignage-author"><strong>Tim, 13 ans</strong></p></div>
+          <div class="temoignage-card"><div class="temoignage-stars">★★★★★</div><p class="temoignage-text">"J'ai aimé tout faire, mais surtout la déco et la manger !"</p><p class="temoignage-author"><strong>Charly, 10 ans</strong></p></div>
         </div>
       </div>
     </section>
 
     <section id="faq">
       <div class="container">
-        <h2>FAQ – Anniversaire cuisine enfant à Lyon</h2>
-        
-        
+        <div class="section-header">
+          <div class="section-badge">❓ FAQ</div>
+          <h2 class="section-title">Questions fréquentes</h2>
+        </div>
         <div class="faq-list">
-          <div class="faq-item">
-            <div class="faq-question">À partir de quel âge sont proposés les ateliers anniversaire ?</div>
-            <div class="faq-answer">
-              Les ateliers cuisine anniversaire sont proposés à partir de 6 ans. Les recettes, le rythme et l'accompagnement sont adaptés à l'âge des enfants (6–8 ans, 9–11 ans, ados).
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">Combien d'enfants peuvent participer à un anniversaire ?</div>
-            <div class="faq-answer">
-              Les ateliers sont organisés en petits groupes de 7 enfants, afin de garantir un bon encadrement et une expérience agréable pour chaque enfant.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">Faut-il prévoir quelque chose le jour de l'anniversaire ?</div>
-            <div class="faq-answer">
-              Non. Tout est inclus : ingrédients, matériel, tabliers si besoin, goûter et boisson. Juste un contenant sera demandé pour remporter les créations des enfants. L'atelier cuisine anniversaire est une activité clé en main.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">Les allergies ou régimes alimentaires sont-ils pris en compte ?</div>
-            <div class="faq-answer">
-              Oui. Les recettes peuvent être adaptées en cas d'allergies ou de régimes spécifiques, à condition que cela soit signalé à l'avance lors de la réservation.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">Où se déroule l'atelier ?</div>
-            <div class="faq-answer">
-              Les ateliers ont lieu au Comptoir Sauvage – Lyon 4e, un lieu accueillant et adapté aux enfants.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">Pourquoi choisir un atelier cuisine pour un anniversaire ?</div>
-            <div class="faq-answer">
-              Parce que c'est une activité ludique et créative, un souvenir partagé plutôt qu'une simple animation, un moment valorisant où chaque enfant devient acteur de son anniversaire.
-            </div>
-          </div>
+          <div class="faq-item"><button class="faq-question">À partir de quel âge sont proposés les ateliers ?<svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Les ateliers cuisine anniversaire sont proposés à partir de 6 ans. Les recettes, le rythme et l'accompagnement sont adaptés à l'âge des enfants (6–8 ans, 9–11 ans, ados).</div></div></div>
+          <div class="faq-item"><button class="faq-question">Combien d'enfants peuvent participer ?<svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Les ateliers sont organisés en petits groupes de 7 enfants, afin de garantir un bon encadrement. Pour des groupes plus grands, un devis personnalisé est proposé.</div></div></div>
+          <div class="faq-item"><button class="faq-question">Faut-il prévoir quelque chose ?<svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Non. Tout est inclus : ingrédients, matériel, tabliers, goûter et boisson. Juste un contenant pour remporter les créations. Les parents peuvent simplement profiter du moment.</div></div></div>
+          <div class="faq-item"><button class="faq-question">Les allergies sont-elles prises en compte ?<svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Oui. Les recettes peuvent être adaptées en cas d'allergies ou de régimes spécifiques, à condition que cela soit signalé à l'avance lors de la réservation.</div></div></div>
+          <div class="faq-item"><button class="faq-question">Où se déroule l'atelier ?<svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Les ateliers ont lieu au Comptoir Sauvage – 1 rue du Pavillon, Lyon 4e (Croix-Rousse), un lieu accueillant et adapté aux enfants.</div></div></div>
         </div>
       </div>
     </section>
 
-    <section id="contact">
+    <section class="cta-section" id="contact">
       <div class="container">
-        <h2>Organiser un anniversaire</h2>
-        <p>Contactez-nous pour demander un devis personnalisé, organiser un anniversaire pour plus de 7 enfants, choisir une thématique spécifique ou réserver une date.</p>
-        
-        <div class="contact-info">
-          <div class="contact-item">
-            <svg width="24" height="24" fill="none">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-<a href="mailto:caroline.nieuviarts@gmail.com" rel="noopener noreferrer">caroline.nieuviarts@gmail.com</a>
-          </div>
-
-          <div class="contact-item">
-            <svg width="24" height="24" fill="none">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-<a href="tel:+33617313205" rel="noopener noreferrer">06 17 31 32 05</a>
+        <div class="cta-content">
+          <h2>Organiser un anniversaire</h2>
+          <p>Réponse rapide, devis sans engagement. Contactez-nous pour réserver une date !</p>
+          <a href="mailto:contact@cheffe-caroline.fr" class="btn btn-secondary">Demander un devis</a>
+          <div class="cta-contact">
+            <a href="mailto:contact@cheffe-caroline.fr"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>contact@cheffe-caroline.fr</a>
+            <a href="https://instagram.com/cheffe.caroline" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>@cheffe.caroline</a>
           </div>
         </div>
-
-        <p style="margin-top:var(--spacing-lg)">Réponse rapide, devis sans engagement.</p>
-        
-<a href="mailto:caroline.nieuviarts@gmail.com" class="cta" style="margin-top:var(--spacing-md)" rel="noopener noreferrer">Demander un devis</a>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="footer-content">
-      <div class="social-links">
-        <a href="https://www.instagram.com/carol_in_cuisine/" target="_blank" aria-label="Instagram Carol'in Cuisine" rel="noopener noreferrer">
-          <svg width="24" height="24" fill="currentColor">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
-          </svg>
-        </a>
+      <div class="footer-logo">Cheffe Caroline</div>
+      <div class="footer-links"><a href="#ateliers">Ateliers</a><a href="#tarifs">Tarifs</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
+      <div class="footer-social">
+        <a href="https://instagram.com/cheffe.caroline" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="https://facebook.com/cheffe.caroline" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
       </div>
-      
-      <p>© 2025 Carol'in Cuisine - Ateliers anniversaire Lyon</p>
-      <p>Comptoir Sauvage - 1 rue du Pavillon, 69004 Lyon</p>
-      <a href="#" style="color:#bdc3c7;font-size:var(--text-sm)" rel="noopener noreferrer">Mentions légales</a>
     </div>
+    <p class="footer-copy">© 2025 Cheffe Caroline • Ateliers cuisine anniversaire à Lyon Croix-Rousse</p>
   </footer>
+
+  <script>
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
 </body>
 </html>
