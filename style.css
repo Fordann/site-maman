@@ -190,7 +190,6 @@
     }
 
     .about-content {
-      display: grid;
       gap: var(--spacing-lg);
       align-items: center;
     }
