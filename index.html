@@ -53,7 +53,7 @@
     .hero { min-height: 100vh; padding: calc(80px + 3rem) 1.5rem 3rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
     .hero-bg { position: absolute; inset: 0; z-index: -1; }
     .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
-    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(253,248,243,0.92) 0%, rgba(253,248,243,0.85) 50%, rgba(253,248,243,0.7) 100%); }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(253,248,243,0.6) 0%, rgba(253,248,243,0.45) 50%, rgba(253,248,243,0.25) 100%); }
     .hero-content { max-width: 700px; position: relative; z-index: 1; }
     .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: white; padding: 0.5rem 1rem; border-radius: var(--radius-full); font-size: 0.8125rem; font-weight: 600; color: var(--raspberry); margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); animation: fadeInUp 0.8s 0.2s both; }
     .hero-title { font-family: var(--font-display); font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; animation: fadeInUp 0.8s 0.3s both; }
@@ -228,7 +228,6 @@
         <li><a href="#tarifs">Tarifs</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
-      <a href="#contact" class="btn btn-primary">Réserver</a>
     </nav>
   </header>
 
@@ -236,12 +235,11 @@
     <section class="hero">
       <div class="hero-bg"><img src="images/main_page_background.png" alt=""></div>
       <div class="hero-content">
-        <div class="hero-badge">⭐ Lyon Croix-Rousse • 6–17 ans</div>
         <h1 class="hero-title">Anniversaire <span>cuisine</span> pour enfants</h1>
         <p class="hero-subtitle">Une idée originale, sans stress pour les parents. Atelier ludique, créatif et encadré dans un cadre chaleureux.</p>
         <div class="hero-ctas">
-          <a href="#contact" class="btn btn-primary">Réserver un atelier</a>
-          <a href="#ateliers" class="btn btn-secondary">Découvrir les formules</a>
+          <a href="#contact" class="btn btn-primary">Réserver</a>
+          <a href="#ateliers" class="btn btn-secondary">Découvrir nos ateliers</a>
         </div>
         <div class="hero-stats">
           <div class="stat"><div class="stat-value">2h</div><div class="stat-label">d'atelier complet</div></div>
@@ -254,7 +252,6 @@
     <section class="pourquoi">
       <div class="container">
         <div class="section-header">
-          <div class="section-badge">✨ Pourquoi choisir</div>
           <h2 class="section-title">Un atelier cuisine anniversaire ?</h2>
           <p class="section-subtitle">Une expérience pensée pour le plaisir des enfants et la tranquillité des parents.</p>
         </div>
@@ -284,7 +281,6 @@
     <section id="ateliers">
       <div class="container">
         <div class="section-header">
-          <div class="section-badge">🎂 Nos formules</div>
           <h2 class="section-title">Des ateliers par tranche d'âge</h2>
           <p class="section-subtitle">Chaque atelier est adapté à l'âge et à la dynamique du groupe.</p>
         </div>
@@ -335,7 +331,6 @@
     <section class="deroulement" id="deroulement">
       <div class="container">
         <div class="section-header">
-          <div class="section-badge">📋 Le programme</div>
           <h2 class="section-title">Comment se déroule un anniversaire ?</h2>
           <p class="section-subtitle">Une expérience clé en main, encadrée par une cheffe professionnelle.</p>
         </div>
@@ -368,7 +363,6 @@
     <section class="tarifs" id="tarifs">
       <div class="container">
         <div class="section-header">
-          <div class="section-badge">💰 Tarifs</div>
           <h2 class="section-title">Informations pratiques</h2>
           <p class="section-subtitle">Une formule tout compris, les parents n'ont rien à prévoir.</p>
         </div>
@@ -393,7 +387,6 @@
 
     <section class="galerie">
       <div class="section-header">
-        <div class="section-badge">📸 En images</div>
         <h2 class="section-title">Une image vaut mille mots</h2>
       </div>
       <div class="galerie-track">
@@ -419,7 +412,6 @@
     <section class="temoignages">
       <div class="container">
         <div class="section-header">
-          <div class="section-badge">💬 Avis</div>
           <h2 class="section-title">Ils en parlent mieux que nous</h2>
         </div>
         <div class="temoignages-grid">
@@ -432,7 +424,6 @@
     <section id="faq">
       <div class="container">
         <div class="section-header">
-          <div class="section-badge">❓ FAQ</div>
           <h2 class="section-title">Questions fréquentes</h2>
         </div>
         <div class="faq-list">
@@ -452,8 +443,8 @@
           <p>Réponse rapide, devis sans engagement. Contactez-nous pour réserver une date !</p>
           <a href="mailto:contact@cheffe-caroline.fr" class="btn btn-secondary">Demander un devis</a>
           <div class="cta-contact">
-            <a href="mailto:contact@cheffe-caroline.fr"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>contact@cheffe-caroline.fr</a>
-            <a href="https://instagram.com/cheffe.caroline" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>@cheffe.caroline</a>
+            <a href="mailto:contact@carolincuisine.com"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>contact@cheffe-caroline.fr</a>
+            <a href="https://www.instagram.com/carol_in_cuisine/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>@cheffe.caroline</a>
           </div>
         </div>
       </div>
@@ -465,8 +456,8 @@
       <div class="footer-logo">Cheffe Caroline</div>
       <div class="footer-links"><a href="#ateliers">Ateliers</a><a href="#tarifs">Tarifs</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
       <div class="footer-social">
-        <a href="https://instagram.com/cheffe.caroline" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-        <a href="https://facebook.com/cheffe.caroline" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="https://www.instagram.com/carol_in_cuisine/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=61556328970681" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
       </div>
     </div>
     <p class="footer-copy">© 2025 Cheffe Caroline • Ateliers cuisine anniversaire à Lyon Croix-Rousse</p>
