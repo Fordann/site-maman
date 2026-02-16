@@ -154,6 +154,12 @@
     .galerie-item { flex-shrink: 0; width: 280px; height: 350px; border-radius: var(--radius); overflow: hidden; }
     .galerie-item img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
     .galerie-item:hover img { transform: scale(1.05); }
+    
+    @media (max-width: 767px) {
+      .galerie { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .galerie-track { animation: none; padding: 0 1.5rem; width: max-content; }
+      .galerie-item { width: 250px; height: 300px; }
+    }
 
     .temoignages { background: var(--chocolate); color: white; }
     .temoignages .section-badge { background: rgba(255,255,255,0.1); color: var(--honey); }
